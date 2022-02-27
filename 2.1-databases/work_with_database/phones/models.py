@@ -13,3 +13,6 @@ class Phone(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Phone, self).save(*args, **kwargs)
+
+
+
