@@ -10,6 +10,24 @@ Content-Type: application/json
   "title": "Помидор",
   "description": "Лучшие помидоры на рынке"
 }
+###
+# создание продукта 2
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Яблоко",
+  "description": "Лучшие яблоки на рынке"
+}
+###
+# создание продукта 3
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Лимон",
+  "description": "Лучшие лимоны на рынке"
+}
 
 ###
 
@@ -35,8 +53,8 @@ Content-Type: application/json
 
 ###
 
-# поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+# получение складов
+GET {{baseUrl}}/stocks/
 Content-Type: application/json
 
 ###
@@ -46,39 +64,46 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "у asdsadasd",
   "positions": [
     {
       "product": 2,
-      "quantity": 250,
+      "quantity": 23250,
       "price": 120.50
     },
     {
       "product": 3,
       "quantity": 100,
       "price": 180
-    }
+    }    
   ]
 }
 
 ###
 
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=помидор
+Content-Type: application/json
+
+###
+
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH {{baseUrl}}/stocks/2/
 Content-Type: application/json
 
 {
+  "address": "адрес А",
   "positions": [
     {
       "product": 2,
-      "quantity": 100,
+      "quantity": 1000000000,
       "price": 130.80
     },
     {
       "product": 3,
-      "quantity": 243,
+      "quantity": 2430000,
       "price": 145
-    }
+    }    
   ]
 }
 
