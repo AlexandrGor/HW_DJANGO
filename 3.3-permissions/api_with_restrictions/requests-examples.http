@@ -8,10 +8,10 @@ Content-Type: application/json
 
 ###
 
-# создание объявления user1
+# создание объявления из-под user1
 POST {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token 99a5cf504590344a5bd1dbc8f590dacef30076bd
+Authorization: Token efb9659cabd4feaeac7cfa0a8940d5d17c6a6a17
 
 {
   "title": "Шкаф IKEA",
@@ -20,26 +20,34 @@ Authorization: Token 99a5cf504590344a5bd1dbc8f590dacef30076bd
 
 ###
 
-# создание объявления user2
+# создание объявления из-под user2
 POST {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token 9da5c358d81f7846b9cfd626978e48010915f6f8
-9da5c358d81f7846b9cfd626978e48010915f6f8
+Authorization: Token b103a6f5c1bfcc93da3626aee71e9d08fd50a311
+
 {
-  "title": "Шкаф IKEA",
-  "description": "Срочно"
+  "title": "Шкаф IKEA2",
+  "description": "Срочно2",
+  "status": "CLOSED"
 }
 
 ###
 
-# попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/1/
+# попытка поменять объявление из-под user1
+PATCH {{baseUrl}}/advertisements/34/
 Content-Type: application/json
-Authorization: Token 99a5cf504590344a5bd1dbc8f590dacef30076bd
+Authorization: Token efb9659cabd4feaeac7cfa0a8940d5d17c6a6a17
 
 {
   "status": "CLOSED"
 }
+
+###
+
+# попытка удалить объявление из-под user1
+DELETE {{baseUrl}}/advertisements/6/
+Content-Type: application/json
+Authorization: Token efb9659cabd4feaeac7cfa0a8940d5d17c6a6a17
 
 ###
 
@@ -50,5 +58,17 @@ Content-Type: application/json
 ###
 
 # фильтрация по дате
-GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
+GET {{baseUrl}}/advertisements/?created_at_after=2022-05-11
+Content-Type: application/json
+
+###
+
+# фильтрация по статусу OPEN c сортировкой
+GET {{baseUrl}}/advertisements/?status=OPEN&ordering=id
+Content-Type: application/json
+
+###
+
+# фильтрация по статусу CLOSED
+GET {{baseUrl}}/advertisements/?status=CLOSED
 Content-Type: application/json
